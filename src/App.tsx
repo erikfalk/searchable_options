@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Options } from "./Options";
 
 function App() {
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>searchable options demo</h1>
       </header>
+      <div className="main">
+        <div className="input">
+          <input
+            id="search_input"
+            type="text"
+            onChange={(e) =>
+              setSearchValue(e.target.value.trim().toLowerCase())
+            }
+          ></input>
+        </div>
+        <Options searchValue={searchValue}></Options>
+      </div>
     </div>
   );
 }
